@@ -1,0 +1,16 @@
+{
+	"schemaVersion": 1,
+	"id": "nivek_first_person",
+	"version": "${version}",
+	"name": "Nivek First Person",
+	"description": "Mostra o corpo do jogador em primeira pessoa e deixa o movimento das maos mais natural.",
+	"authors": ["Nivek"],
+	"license": "MIT",
+	"environment": "client",
+	"mixins": ["nivek_first_person.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "~1.21.1",
+		"java": ">=21"
+	}
+}
