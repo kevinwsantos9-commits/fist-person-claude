@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v6
+
+      - name: Validar o Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+
+      - name: Instalar o JDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+
+      - name: Permitir executar o gradlew
+        run: chmod +x ./gradlew
+
+      - name: Compilar
+        run: ./gradlew build
+
+      - name: Guardar o .jar
+        uses: actions/upload-artifact@v7
+        with:
+          name: nivek-first-person
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
